@@ -1,8 +1,13 @@
 package com.galvanize.discuss.users;
 
+import com.galvanize.discuss.topics.Topic;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class User {
@@ -11,6 +16,9 @@ public class User {
     @GeneratedValue
     private Long id;
     private String username;
+
+    @OneToMany(mappedBy = "author")
+    private List<Topic> topics = new ArrayList<>();
 
     public User() {}
 
